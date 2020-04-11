@@ -194,6 +194,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initTimePicker() {//Dialog 模式下，在底部弹出
+        Calendar selectedDate = Calendar.getInstance();//系统当前时间
+        Calendar startDate = Calendar.getInstance();
+        startDate.set(2014, 1, 23, 10, 10, 10);
+        Calendar endDate = Calendar.getInstance();
+        endDate.set(2029, 2, 28, 15, 50, 50);
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
@@ -220,6 +225,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setLineSpacingMultiplier(2.0f)
                 .isAlphaGradient(true)
                 .isNeedFormatInt(false)
+                .setDate(selectedDate)
+                .setRangDate(startDate, endDate)
                 .build();
 
         Dialog mDialog = pvTime.getDialog();

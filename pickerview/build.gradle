@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-//apply plugin: 'com.novoda.bintray-release'//添加JCenter插件
-
+if (rootProject.ext.publish_picker_view) {
+    apply plugin: 'com.novoda.bintray-release'//添加JCenter插件
+}
 
 
 android {
@@ -24,27 +25,32 @@ android {
     }
 }
 
-//allprojects {
-//    tasks.withType(Javadoc) {//兼容中文字符
-//        options{
-//            encoding "UTF-8"
-//            charSet 'UTF-8'
-//            links "http://docs.oracle.com/javase/7/docs/api"
-//        }
-//    }
-//}
-//publish {
-//    userOrg = 'contrarywind'//bintray.com 用户名/组织名 user/org name
-//    groupId = 'com.contrarywind'//JCenter上显示的路径 path
-//    artifactId = 'Android-PickerView'//项目名称 project name
-//    publishVersion = '4.1.9'//版本号 version code
-//    desc = 'this is a pickerview for android'//项目描述 description
-//    website = 'https://github.com/Bigkoo/Android-PickerView' //项目网址链接 link
-//}
+if (rootProject.ext.publish_picker_view) {
+    allprojects {
+        tasks.withType(Javadoc) {//兼容中文字符
+            options {
+                encoding "UTF-8"
+                charSet 'UTF-8'
+                links "http://docs.oracle.com/javase/7/docs/api"
+            }
+        }
+    }
+    publish {
+        userOrg = 'reinhard'//bintray.com 用户名/组织名 user/org name
+        groupId = 'com.reinhard'//JCenter上显示的路径 path
+        artifactId = 'Android-PickerView'//项目名称 project name
+        publishVersion = '4.1.9'//版本号 version code
+        desc = 'this is a pickerview for android'//项目描述 description
+        website = 'https://github.com/WuFengXue/Android-PickerView' //项目网址链接 link
+    }
+}
 
 dependencies {
-//    compile fileTree(include: ['*.jar'], dir: 'libs')
-    api project(path: ':wheelview')
-//    api 'com.contrarywind:wheelview:4.1.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    if (rootProject.ext.publish_picker_view) {
+        api 'com.reinhard:wheelview:4.1.0'
+    } else {
+        api project(path: ':wheelview')
+    }
     implementation 'com.android.support:support-annotations:28.0.0'
 }

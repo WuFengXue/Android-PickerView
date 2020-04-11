@@ -1,4 +1,19 @@
 
+## 说明
+
+* 分割线以上的部分为新添加的内容
+* 本仓库的特性
+  * 在原项目的基础上将时间范围（setRangDate() 接口）的精度扩展到秒级
+* 使用方式
+  * 1、克隆到本地，自己编译、打包或者导入为库模块
+  * 2、使用 gradle 依赖导入本仓库的版本
+
+```java
+compile 'com.reinhard:Android-PickerView:4.1.9'
+```
+
+## ————分割线————
+
 ## Android-PickerView
 
 [![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg)](https://android-arsenal.com/api?level=9) 
@@ -21,7 +36,7 @@
 ## 介绍
 
 这是一款仿iOS的PickerView控件，有时间选择器和选项选择器，新版本的详细特性如下：
- 
+
 ——TimePickerView  时间选择器，支持年月日时分，年月日，年月，时分等格式。   
 ——OptionsPickerView  选项选择器，支持一，二，三级选项选择，并且可以设置是否联动 。
 
@@ -71,7 +86,7 @@
  #### V4.1.8 版本更新说明（2019-4-24）
  -  更新gradle版本， wheelview基础库由 compile 改为 api 依赖，避免gradle 5.0+版本无法引入。
  -  修复 setTextXOffset 赋值问题。
-  
+
  #### V4.1.7 版本更新说明（2019-1-10）
  -  修复 WheelView在初始化时，数据为空导致height=0，造成一直显示不出来的问题。
  -  新增取消按钮的点击事件监听入口。
@@ -266,7 +281,7 @@ pvOptions = new  OptionsPickerBuilder(this, new OptionsPickerView.OnOptionsSelec
 
 
 #### 6.若只需要WheelView基础控件自行扩展实现逻辑，可直接添加基础控件库，Gradle 依赖：
- 
+
 ```java
 compile 'com.contrarywind:wheelview:4.0.9'
 ```
